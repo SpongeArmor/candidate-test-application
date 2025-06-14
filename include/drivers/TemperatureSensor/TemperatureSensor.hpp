@@ -9,7 +9,7 @@
 #include <random>
 #include <chrono>
 
-#include "errors.h"
+#include "errors.hpp"
 
 using namespace std;
 
