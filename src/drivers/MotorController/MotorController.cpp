@@ -88,6 +88,16 @@ ErrorCode MotorController::getSpeed(std::int16_t *speed) {
     return ErrorCode::OK;
 }
 
+ErrorCode MotorController::getDirection(Direction *direction) {
+    if (!_initialized) {
+        return ErrorCode::OBJECT_NOT_INITIALIZED;
+    }
+
+    *direction = this->_motorDirection;
+
+    return ErrorCode::OK;
+}
+
 /**
  * Read motor speed and update the internal state.
  * @param None

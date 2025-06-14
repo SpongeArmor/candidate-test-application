@@ -54,6 +54,7 @@ class MotorController {
         ErrorCode setSpeed(std::int16_t speed);
         ErrorCode readMotorSpeed(void);
         ErrorCode getSpeed(std::int16_t *speed);
+        ErrorCode getDirection(Direction *direction);
 
         ErrorCode startMotor(std::int16_t speed, Direction direction = Direction::FORWARD);
         ErrorCode setDirection(Direction direction);
