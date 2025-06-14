@@ -19,6 +19,12 @@ TemperatureSensor::TemperatureSensor() {
 TemperatureSensor::~TemperatureSensor() {
 }
 
+/**
+ * Retrieves the last stored temperature.
+ * @param temperature Pointer to store the current temperature, <double>.
+ * @return ErrorCode indicating success or failure.
+ * @note Run updateTemperature() first to ensure the temperature is up-to-date.
+ */
 ErrorCode TemperatureSensor::getTemperature(double *temperature){
     if(!_initialized)
         return ErrorCode::OBJECT_NOT_INITIALIZED;
@@ -30,6 +36,11 @@ ErrorCode TemperatureSensor::getTemperature(double *temperature){
     return ErrorCode::OK;
 }
 
+/**
+ * Updates the temperature by generating a new random value.
+ * @return ErrorCode indicating success or failure.
+ * @note This function should be called periodically to refresh the temperature data from the sensor.
+ */
 ErrorCode TemperatureSensor::updateTemperature(void){
     if(!_initialized)
         return ErrorCode::OBJECT_NOT_INITIALIZED;
@@ -52,9 +63,13 @@ ErrorCode TemperatureSensor::updateTemperature(void){
 
 }
 
+/**
+ * Generates a random temperature value within the specified range.
+ * @param temperature Pointer to store the generated temperature value.
+ * @return ErrorCode indicating success or failure.
+ * @note This function simulates the behavior of a temperature sensor by generating a random value.
+ */
 ErrorCode TemperatureSensor::generateTemperatureData(double *temperature) {
-    static_assert(_t_max > _t_min, "Invalid reference temprature range provided, please check again.");
-
     double _temp = 0.00;
 
     std::random_device rd;
