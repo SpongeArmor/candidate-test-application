@@ -7,11 +7,12 @@ add_executable(
     ${PROJECT_NAME} 
     src/main.cpp
     src/drivers/TemperatureSensor/TemperatureSensor.cpp
+    src/drivers/MotorController/MotorController.cpp
 )
 
 target_include_directories(
     ${PROJECT_NAME} 
-    PUBLIC 
+    PRIVATE 
     
     ${CMAKE_CURRENT_SOURCE_DIR}/include
     
