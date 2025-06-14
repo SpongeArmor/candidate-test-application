@@ -6,14 +6,13 @@ set(CMAKE_CXX_STANDARD 20)
 add_executable(
     ${PROJECT_NAME} 
     src/main.cpp
+    src/drivers/TemperatureSensor/TemperatureSensor.cpp
 )
 
 target_include_directories(
     ${PROJECT_NAME} 
-    PRIVATE 
+    PUBLIC 
     
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
     
 )
-
-add_executable(plexus-mini-assignment src/main.cpp)
