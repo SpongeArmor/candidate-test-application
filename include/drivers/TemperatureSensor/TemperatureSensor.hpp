@@ -24,6 +24,7 @@ class TemperatureSensor {
 
         TemperatureSensor();
         ~TemperatureSensor();
+        ErrorCode initializeSensor(void);
         ErrorCode getTemperature(double *temperature);
         ErrorCode updateTemperature(void);
     
