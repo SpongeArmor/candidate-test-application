@@ -19,7 +19,7 @@ ErrorCode MotorController::initializeMotor(motor_config_t motorconfig){
         this->_motorSpeed = 0; // Initialize motor speed to 0
 
         _initialized = true;
-        std::cout << "MotorController initialized." << std::endl;
+        // std::cout << "MotorController initialized." << std::endl;
     }
 
     return ErrorCode::OK;
