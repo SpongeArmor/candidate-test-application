@@ -75,13 +75,13 @@ void setMotorSpeed(int speed) {
     {
         int newRPM = 2000;
         std::unique_lock<std::mutex> lock(mutex_motorRPM);
-        cout << "Updating motor speed to " << newRPM << "RPM" << endl;
         _error = mc.setSpeed(newRPM); // Update motor speed to 2000 RPM
         lock.unlock();   
     } 
 
     if (_error != ErrorCode::OK) {
-        std::cerr << "Failed to set motor speed: " << static_cast<int>(_error) << std::endl;
+        // std::cerr << "Failed to set motor speed: " << static_cast<int>(_error) << std::endl;
+        return;
     }
 }
 
@@ -118,12 +118,8 @@ int main(int argc, char* argv[]) {
 
         }
 
-        // Simulate setting motor speed every 5 seconds
-        if (motorRPM_mt < 2000) {
-            setMotorSpeed(2000); // Set motor speed to 2000 RPM
-        } else {
-            setMotorSpeed(1500); // Set motor speed back to 1500 RPM
-        }
+        // setMotorSpeed(3000);    // if needed to set manually
+
         // Adding 1sec delay between prints
         std::this_thread::sleep_for(std::chrono::milliseconds(1000)); // Simulate some delay for processing
     }
