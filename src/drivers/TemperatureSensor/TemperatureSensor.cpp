@@ -15,10 +15,10 @@ TemperatureSensor::~TemperatureSensor() {
 ErrorCode TemperatureSensor::initializeSensor(void) {
     if(!_initialized) {
         // Perform any necessary initialization for the temperature sensor here
-        cout << "TemperatureSensor initialized." << endl;
+        // cout << "TemperatureSensor initialized." << endl;
         _initialized = true;
     } else {
-        cout << "TemperatureSensor already initialized." << endl;
+        // cout << "TemperatußreSensor already initialized." << endl;
     }
     
     return ErrorCode::OK;
