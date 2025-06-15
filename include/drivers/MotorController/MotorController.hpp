@@ -7,7 +7,7 @@
 #include <random>
 
 #define MOTOR_MAX_SPEED 3000 // Maximum speed in RPM
-// #define GENERATE_DUMMY_DATA // uncomment to be able to set the motor speed manually for testing purposes
+#define GENERATE_DUMMY_DATA // uncomment to be able to set the motor speed manually for testing purposes
 
 constexpr std::int16_t _min_speed = 450; // Minimum temperature in Celsius for randim value generation
 constexpr std::int16_t _max_speed = 550; // Maximum temperature in Celsius for random value generation
@@ -44,20 +44,20 @@ class MotorController {
         std::int16_t _motorSpeed = 0; // Current speed of the motor in RPM
         motor_config_t _motorConfig = {0, 0, 0, MOTOR_MAX_SPEED}; // Default motor configuration
         
-        ErrorCode initializeMotor(motor_config_t motorconfig);
         ErrorCode generateMotorData(motor_data_t *motorData);
         
         public:
         MotorController();
         ~MotorController();
         
+        ErrorCode initializeMotor(motor_config_t motorconfig);
+        
+        ErrorCode startMotor(std::int16_t speed, Direction direction = Direction::FORWARD);
         ErrorCode setSpeed(std::int16_t speed);
         ErrorCode readMotorSpeed(void);
         ErrorCode getSpeed(std::int16_t *speed);
-        ErrorCode getDirection(Direction *direction);
-
-        ErrorCode startMotor(std::int16_t speed, Direction direction = Direction::FORWARD);
         ErrorCode setDirection(Direction direction);
+        ErrorCode getDirection(Direction *direction);
         ErrorCode stopMotor(void);
         
 };

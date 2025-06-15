@@ -1,25 +1,26 @@
 #include "drivers/MotorController/MotorController.hpp"
 
 MotorController::MotorController() {
-    if (!_initialized) {
-        _motorRunning = 0;
-        _initialized = true;
-        std::cout << "MotorController initialized." << std::endl;
-    } else {
-        std::cout << "MotorController already initialized." << std::endl;
-    }
 }
 
 MotorController::~MotorController() {
 }
 
 ErrorCode MotorController::initializeMotor(motor_config_t motorconfig){
-    if(!_initialized)
+    if(_initialized)
     {
-        return ErrorCode::OBJECT_NOT_INITIALIZED;
-    }
+        return ErrorCode::OBJECT_ALREADY_INITIALIZED;
+    }else {
+        // Initialize motor here i.e. set up GPIO pins, PWM, etc.
+        _motorRunning = 0;
+        this->setSpeed(0); // Set initial speed to 0
+        this->_motorConfig = motorconfig; // Set motor configuration
+        this->_motorDirection = Direction::FORWARD; // Set initial direction to FORWARD
+        this->_motorSpeed = 0; // Initialize motor speed to 0
 
-    // Initialize motor here i.e. set up GPIO pins, PWM, etc.
+        _initialized = true;
+        std::cout << "MotorController initialized." << std::endl;
+    }
 
     return ErrorCode::OK;
 }
@@ -112,7 +113,7 @@ ErrorCode MotorController::readMotorSpeed(void){
 
     // Generate dummy data/read actual sensor data
     // In this case, we will generate dummy data
-    ErrorCode _error;
+    ErrorCode _error = ErrorCode::OK;
 
 #ifdef GENERATE_DUMMY_DATA
     _error = generateMotorData(&_dummy_motor_data);  // to generate random data within a given rage
