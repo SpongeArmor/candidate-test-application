@@ -6,17 +6,22 @@
 using namespace std;
 
 TemperatureSensor::TemperatureSensor() {
-    if(!_initialized) {
-        time_t _currentTime = std::time(nullptr);
-        std::srand(_currentTime);
-        _initialized = true;
-        cout << "TemperatureSensor initialized." << endl;
-    } else {
-        cout << "TemperatureSensor already initialized." << endl;
-    }
+
 }
 
 TemperatureSensor::~TemperatureSensor() {
+}
+
+ErrorCode TemperatureSensor::initializeSensor(void) {
+    if(!_initialized) {
+        // Perform any necessary initialization for the temperature sensor here
+        cout << "TemperatureSensor initialized." << endl;
+        _initialized = true;
+    } else {
+        cout << "TemperatureSensor already initialized." << endl;
+    }
+    
+    return ErrorCode::OK;
 }
 
 /**
