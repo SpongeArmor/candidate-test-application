@@ -7,7 +7,7 @@
 #include <random>
 
 #define MOTOR_MAX_SPEED 3000 // Maximum speed in RPM
-#define GENERATE_DUMMY_DATA // uncomment to be able to set the motor speed manually for testing purposes
+// #define GENERATE_DUMMY_DATA // uncomment to be able to set the motor speed manually for testing purposes
 
 constexpr std::int16_t _min_speed = 450; // Minimum temperature in Celsius for randim value generation
 constexpr std::int16_t _max_speed = 550; // Maximum temperature in Celsius for random value generation
